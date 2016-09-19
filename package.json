@@ -1,0 +1,45 @@
+{
+  "name": "react-shooter",
+  "version": "1.0.0",
+  "description": "A shooter built with React.",
+  "main": "app.js",
+  "scripts": {
+    "build": "browserify ./src/app.js > ./dist/bundle.js",
+    "dev": "watchify ./src/app.js -d -o ./dist/bundle.js -v",
+    "serve": "ecstatic -p 3000 ./dist"
+  },
+  "keywords": [
+    "game",
+    "shooter",
+    "react"
+  ],
+  "author": "Daniel Bruce <dbruce1126@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "babel": "^6.5.2",
+    "babel-preset-es2015": "^6.14.0",
+    "babel-preset-react": "^6.11.1",
+    "babel-preset-stage-0": "^6.5.0",
+    "babelify": "^7.3.0",
+    "browserify": "^13.1.0",
+    "ecstatic": "^2.1.0",
+    "react": "^15.3.2",
+    "react-dom": "^15.3.2",
+    "react-game-kit": "0.0.1",
+    "watchify": "^3.7.0"
+  },
+  "browserify": {
+    "transform": [
+      [
+        "babelify",
+        {
+          "presets": [
+            "es2015",
+            "stage-0",
+            "react"
+          ]
+        }
+      ]
+    ]
+  }
+}
