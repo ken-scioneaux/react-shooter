@@ -6,12 +6,15 @@ import {
   STATE_MAIN_MENU,
   STATE_IN_LEVEL,
   STATE_GAME_OVER,
+  STATE_CREDITS,
   mainMenu,
   startLevel,
+  credits,
   gameOver,
 } from '../Actions/mainState';
 import MainMenu from './MainMenu';
 import Engine from './Engine';
+import Credits from './Credits';
 
 class MainState extends Component
 {
@@ -20,6 +23,7 @@ class MainState extends Component
       STATE_MAIN_MENU,
       STATE_IN_LEVEL,
       STATE_GAME_OVER,
+      STATE_CREDITS,
     ]),
   };
   render() {
@@ -29,6 +33,8 @@ class MainState extends Component
         return <MainMenu { ...restOfProps } />
       case STATE_IN_LEVEL:
         return <Engine { ...restOfProps } />
+      case STATE_CREDITS:
+        return <Credits { ...restOfProps } />
       // TODO: add more states
     }
     return null;
@@ -39,7 +45,8 @@ class MainState extends Component
   });
   static mapDispatchToProps = (dispatch, ownProps) => ({
     onStartNewGame: () => dispatch(startLevel(1)),
-    onQuit: () => dispatch(mainMenu()),
+    onCredits: () => dispatch(credits()),
+    onMainMenu: () => dispatch(mainMenu()),
     onDeath: () => dispatch(gameOver()),
   });
 }

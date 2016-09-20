@@ -23,6 +23,7 @@ export default class MainMenu extends Component
   };
   static propTypes = {
     onStartNewGame: PropTypes.func.isRequired,
+    onCredits: PropTypes.func.isRequired,
   };
   constructor(props) {
     super(props);
@@ -38,7 +39,7 @@ export default class MainMenu extends Component
     this.context.loop.unsubscribe(this.update);
   }
   render() {
-    const { onStartNewGame } = this.props;
+    const { onStartNewGame, onCredits } = this.props;
     return (
       <ul style={ LIST_STYLE }>
         <li style={ LIST_ITEM_STYLE }>
@@ -47,7 +48,7 @@ export default class MainMenu extends Component
           </button>
         </li>
         <li style={ LIST_ITEM_STYLE }>
-          <button type="button" onClick={ () => { console.log('Do something later with this.')} } style={ BUTTON_STYLE }>
+          <button type="button" onClick={ onCredits } style={ BUTTON_STYLE }>
             Credits
           </button>
         </li>
