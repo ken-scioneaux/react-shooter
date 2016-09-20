@@ -16,12 +16,41 @@ const SHIP_CONTAINER_STYLE = {
 };
 
 class Engine extends Component {
+  static MAX_TICKS = 100;
+  static contextTypes = {
+    loop: PropTypes.object,
+  };
+
+  constructor(props) {
+    super(props);
+    this.update = this.update.bind(this);
+    this.state = {
+      tick: 1,
+    };
+  }
+
+  update() {
+    const tick = (this.state.tick + 1) % Engine.MAX_TICKS;
+    this.setState({
+      tick,
+    });
+  };
+
+  componentDidMount() {
+    this.context.loop.subscribe(this.update);
+  }
+
+  componentWillUnmount() {
+    this.context.loop.unsubscribe(this.update);
+  }
+
   render() {
+    const { tick } = this.state;
     // place things like <World>, <Body>, etc here
     return (
       <World>
-        <GameBackground src={'black.png'} repeat={true}>
-          <div style={ TEXT_STYLE }>We are in the game!</div>
+        <GameBackground src={'black.png'} repeat={true} position={tick}>
+          <div style={ TEXT_STYLE }>We are in the game! {tick}</div>
           <div style={ SHIP_CONTAINER_STYLE }>
             <Sprite
               offset={[0,0]}
