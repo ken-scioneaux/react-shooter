@@ -27,7 +27,7 @@ class GameBackground extends Component {
           style={{
             backgroundImage: `url(${src})`,
             backgroundRepeat: repeat ? 'repeat' : 'initial',
-            top: position * scale * -1,
+            bottom: position * scale * -1,
             ...DEFAULT_STYLES,
           }}
         />
