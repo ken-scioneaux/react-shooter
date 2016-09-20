@@ -33,30 +33,27 @@ export default class Credits extends Component
       tick: 1,
       red: 8,
       blue: 32,
-      green: 128,
+      green: 64,
     };
+    this.update = this.update.bind(this);
   }
-
-  update = () => {
+  update() {
     const tick = (this.state.tick + 1) % Credits.MAX_TICKS;
     const ratio = (tick * TWO_PI) / Credits.MAX_TICKS;
     this.setState({
       tick,
-      red: (this.state.red + 1) % 256,
-      blue: (this.state.blue + 1) % 256,
-      green: (this.state.green + 1) % 256,
+      red: (this.state.red - 31) % 224 + 32,
+      blue: (this.state.blue - 31) % 224 + 32,
+      green: (this.state.green - 31) % 224 + 32,
       height: Math.sin(ratio) * Credits.MAX_HEIGHT + Credits.MAX_HEIGHT,
     });
   };
-
   componentDidMount() {
     this.context.loop.subscribe(this.update);
   }
-
   componentWillUnmount() {
     this.context.loop.unsubscribe(this.update);
   }
-
   render() {
     const { red, blue, green, height } = this.state;
     const containerStyle = {
@@ -69,7 +66,7 @@ export default class Credits extends Component
     return (
       <div style={ containerStyle }>
         <p style={ textStyle }>
-          Made by Dan and Andrew
+          Made with love by Dan and Andrew
         </p>
         <p>
           <button type="button" style={ BUTTON_STYLE } onClick={ this.props.onMainMenu }>
