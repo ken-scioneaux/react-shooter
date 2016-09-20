@@ -54,7 +54,7 @@ class Engine extends Component {
     // place things like <World>, <Body>, etc here
     return (
       <World>
-        <GameBackground src={'black.png'} repeat={true} position={tick}>
+        <GameBackground src={'black.png'} repeat position={tick}>
           <div style={ TEXT_STYLE }>We are in the game! {tick}</div>
           <div style={ SHIP_CONTAINER_STYLE }>
             <Sprite

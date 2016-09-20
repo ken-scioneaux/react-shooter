@@ -30,11 +30,11 @@ class MainState extends Component
     const { currentState, ...restOfProps } = this.props;
     switch (currentState) {
       case STATE_MAIN_MENU:
-        return <MainMenu { ...restOfProps } />
+        return <MainMenu { ...restOfProps } />;
       case STATE_IN_LEVEL:
-        return <Engine { ...restOfProps } />
+        return <Engine { ...restOfProps } />;
       case STATE_CREDITS:
-        return <Credits { ...restOfProps } />
+        return <Credits { ...restOfProps } />;
       // TODO: add more states
     }
     console.warn('Unhandled state:', currentState);
