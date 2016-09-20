@@ -29,7 +29,7 @@ export default class MainMenu extends Component
     super(props);
     this.update = this.update.bind(this);
   }
-  update = () => {
+  update() {
     // do nothing for now...we'll come back to this
   };
   componentDidMount() {
