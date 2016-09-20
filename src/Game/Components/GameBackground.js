@@ -11,7 +11,9 @@ class GameBackground extends Component {
     repeat: PropTypes.bool,
     children: PropTypes.arrayOf(PropTypes.node),
   };
-
+  static defaultProps = {
+    repeat: false,
+  };
   render() {
     const { repeat, src, children } = this.props;
 
@@ -30,4 +32,3 @@ class GameBackground extends Component {
 }
 
 export default GameBackground;
-
