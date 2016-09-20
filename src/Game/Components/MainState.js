@@ -24,7 +24,7 @@ class MainState extends Component
       STATE_IN_LEVEL,
       STATE_GAME_OVER,
       STATE_CREDITS,
-    ]),
+    ]).isRequired,
   };
   render() {
     const { currentState, ...restOfProps } = this.props;
@@ -37,6 +37,7 @@ class MainState extends Component
         return <Credits { ...restOfProps } />
       // TODO: add more states
     }
+    console.warn('Unhandled state:', currentState);
     return null;
   }
   static mapStateToProps = (state, ownProps) => ({
