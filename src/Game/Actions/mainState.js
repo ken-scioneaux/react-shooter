@@ -14,7 +14,7 @@ const changeMainState = (state) => ({
 export const mainMenu = () => changeMainState(STATE_MAIN_MENU);
 // triggered to start a new level
 export const startLevel = (level) => ({
-  ...changeMainState(STATE_MAIN_MENU),
+  ...changeMainState(STATE_IN_LEVEL),
   level,
 });
 // triggered to start the game over state

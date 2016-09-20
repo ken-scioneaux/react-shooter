@@ -2,8 +2,16 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 
-import { STATE_MAIN_MENU, STATE_IN_LEVEL, STATE_GAME_OVER } from '../Actions/mainState';
+import {
+  STATE_MAIN_MENU,
+  STATE_IN_LEVEL,
+  STATE_GAME_OVER,
+  mainMenu,
+  startLevel,
+  gameOver,
+} from '../Actions/mainState';
 import MainMenu from './MainMenu';
+import Engine from './Engine';
 
 class MainState extends Component
 {
@@ -15,10 +23,13 @@ class MainState extends Component
     ]),
   };
   render() {
-    switch (this.props.currentState) {
+    const { currentState, ...restOfProps } = this.props;
+    switch (currentState) {
       case STATE_MAIN_MENU:
-        return <MainMenu />
-      // TODO: implement other states
+        return <MainMenu { ...restOfProps } />
+      case STATE_IN_LEVEL:
+        return <Engine { ...restOfProps } />
+      // TODO: add more states
     }
     return null;
   }
@@ -26,6 +37,14 @@ class MainState extends Component
     currentState: state.mainState,
     ...ownProps
   });
+  static mapDispatchToProps = (dispatch, ownProps) => ({
+    onStartNewGame: () => dispatch(startLevel(1)),
+    onQuit: () => dispatch(mainMenu()),
+    onDeath: () => dispatch(gameOver()),
+  });
 }
 
-export default connect(MainState.mapStateToProps)(MainState);
+export default connect(
+  MainState.mapStateToProps,
+  MainState.mapDispatchToProps
+)(MainState);
