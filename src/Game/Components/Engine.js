@@ -4,6 +4,11 @@ import { Loop, World, Body, Sprite } from 'react-game-kit';
 import GameBackground from './GameBackground';
 
 const TEXT_STYLE = {
+  position: 'absolute',
+  top: 10,
+  left: 0,
+  right: 0,
+  margin: 'auto',
   color: 'white',
   textAlign: 'center',
   fontSize: '24px',

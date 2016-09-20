@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 
 const DEFAULT_STYLES = {
   width: '100%',
-  height: '125%',
+  height: '200%',
   position: 'absolute',
 };
 
