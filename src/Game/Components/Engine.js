@@ -15,31 +15,28 @@ const SHIP_CONTAINER_STYLE = {
   marginLeft: -49,
 };
 
-class Engine extends Component
-{
+class Engine extends Component {
   render() {
     // place things like <World>, <Body>, etc here
     return (
-      <Loop>
-        <World>
-          <GameBackground src={'black.png'} repeat={true}>
-            <div style={ TEXT_STYLE }>We are in the game!</div>
-            <div style={ SHIP_CONTAINER_STYLE }>
-              <Sprite
-                offset={[0,0]}
-                state={0}
-                steps={[0]}
-                scale={1}
-                repeat={false}
-                src={'ship.png'}
-                tileHeight={75}
-                tileWidth={98}
-                style={{ bottom: 0 }}
-              />
-            </div>
-          </GameBackground>
-        </World>
-      </Loop>
+      <World>
+        <GameBackground src={'black.png'} repeat={true}>
+          <div style={ TEXT_STYLE }>We are in the game!</div>
+          <div style={ SHIP_CONTAINER_STYLE }>
+            <Sprite
+              offset={[0,0]}
+              state={0}
+              steps={[0]}
+              scale={1}
+              repeat={false}
+              src={'ship.png'}
+              tileHeight={75}
+              tileWidth={98}
+              style={{ bottom: 0 }}
+            />
+          </div>
+        </GameBackground>
+      </World>
     );
   }
 }

@@ -1,5 +1,10 @@
 import React, { Component, PropTypes } from 'react';
 
+const DEFAULT_STYLES = {
+  width: '100%',
+  height: '100%',
+};
+
 class GameBackground extends Component {
   static props = {
     src: PropTypes.string.isRequired,
@@ -15,13 +20,10 @@ class GameBackground extends Component {
         style={{
           backgroundImage: `url(${src})`,
           backgroundRepeat: repeat ? 'repeat' : 'initial',
-          width: '100%',
-          height: '100%',
+          ...DEFAULT_STYLES,
         }}
       >
-        {React.Children.map(children, (elm) => {
-          return React.cloneElement(elm);
-        })}
+        {children}
       </div>
     );
   }
