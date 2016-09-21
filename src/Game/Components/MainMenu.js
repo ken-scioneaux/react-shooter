@@ -1,23 +1,7 @@
-// the main menu
 import React, { Component, PropTypes } from 'react';
+import MainMenuList from './MainMenuList';
 
-// css style of main menu
-const LIST_STYLE = {
-  listStyle: 'none',
-  textAlign: 'center',
-};
-
-const LIST_ITEM_STYLE = {
-  marginBottom: '15px',
-};
-
-const BUTTON_STYLE = {
-  width: '250px',
-  height: '50px',
-};
-
-export default class MainMenu extends Component
-{
+export default class MainMenu extends Component {
   static contextTypes = {
     loop: PropTypes.object,
   };
@@ -40,19 +24,14 @@ export default class MainMenu extends Component
   }
   render() {
     const { onStartNewGame, onCredits } = this.props;
+    const menuListOptions = [
+      { label: 'Start New Game', onClick: onStartNewGame },
+      { label: 'Credits', onClick: onCredits },
+    ];
     return (
-      <ul style={ LIST_STYLE }>
-        <li style={ LIST_ITEM_STYLE }>
-          <button type="button" onClick={ onStartNewGame } style={ BUTTON_STYLE } >
-            Start New Game
-          </button>
-        </li>
-        <li style={ LIST_ITEM_STYLE }>
-          <button type="button" onClick={ onCredits } style={ BUTTON_STYLE }>
-            Credits
-          </button>
-        </li>
-      </ul>
+      <div className="main-menu">
+        <MainMenuList options={menuListOptions} />
+      </div>
     );
   }
 }

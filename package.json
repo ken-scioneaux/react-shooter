@@ -6,7 +6,8 @@
   "scripts": {
     "build": "browserify ./src/app.js > ./dist/bundle.js",
     "dev": "watchify ./src/app.js -d -o ./dist/bundle.js -v",
-    "serve": "ecstatic -p 3000 ./dist"
+    "serve": "ecstatic -p 3000 ./dist",
+    "sass": "node-sass -w ./sass/styles.scss ./dist/styles.css"
   },
   "keywords": [
     "game",
@@ -23,6 +24,7 @@
     "babelify": "^7.3.0",
     "browserify": "^13.1.0",
     "ecstatic": "^2.1.0",
+    "node-sass": "^3.10.0",
     "react": "^15.3.2",
     "react-dom": "^15.3.2",
     "react-game-kit": "0.0.1",
