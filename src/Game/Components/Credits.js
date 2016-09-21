@@ -62,6 +62,7 @@ export default class Credits extends Component {
     ];
     return (
       <div>
+        <h1 className="game-header">React Shooter</h1>
         <MenuList options={menuListOptions} />
         <div style={ containerStyle }>
           <p style={ textStyle }>

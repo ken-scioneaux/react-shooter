@@ -30,6 +30,7 @@ export default class MainMenu extends Component {
     ];
     return (
       <div className="main-menu">
+        <h1 className="game-header">React Shooter</h1>
         <MenuList options={menuListOptions} />
       </div>
     );
