@@ -12,8 +12,7 @@ const BASE_STYLE = {
 
 const TWO_PI = 2 * Math.PI;
 
-export default class Credits extends Component
-{
+export default class Credits extends Component {
   static MAX_TICKS = 240;
   static MAX_HEIGHT = 200;
   static contextTypes = {
@@ -59,12 +58,11 @@ export default class Credits extends Component
       color: `rgba(${red}, ${blue}, ${green}, 1.0)`,
     };
     const menuListOptions = [
-      { label: 'Back to Main Menu', onClick: this.props.onMainMenu }
+      { label: 'Back to Main Menu', onClick: this.props.onMainMenu },
     ];
     return (
       <div>
         <MenuList options={menuListOptions} />
-
         <div style={ containerStyle }>
           <p style={ textStyle }>
             Made with love by Dan and Andrew
