@@ -1,45 +1,42 @@
-.main-menu {
+.menu-list {
   color: white;
   font-family: Arial, serif;
+  list-style: none;
+  margin-top: 50px;
+  text-align: left;
 
-  .main-menu-list {
-    list-style: none;
-    margin-top: 150px;
+  .menu-list-item {
+    border: none;
+    color: white;
+    font-size: 175%;
+    height: 50px;
+    margin: 50px 0;
+    position: relative;
     text-align: left;
-    
-    .menu-list-item {
-      border: none;
-      color: white;
-      font-size: 175%;
-      height: 50px;
-      margin: 50px 0;
-      position: relative;
-      text-align: left;
-      width: 250px;
+    width: 250px;
 
-      &:hover {
-        cursor: pointer;
+    &:hover {
+      cursor: pointer;
 
-        .menu-list-item-flair {
-          width: 100%;
-        }
-      }
-
-      .menu-list-item-text {
-        padding-left: 10px;
-        position: absolute;
-        top: 0;
-        z-index: 2;
-      }
       .menu-list-item-flair {
-        border-bottom: 1px solid white;
-        height: 100%;
-        position: absolute;
-        top: 0;
-        transition: 200ms width;
-        width: 0;
-        z-index: 1;
+        width: 100%;
       }
+    }
+
+    .menu-list-item-text {
+      padding-left: 10px;
+      position: absolute;
+      top: 0;
+      z-index: 2;
+    }
+    .menu-list-item-flair {
+      border-bottom: 1px solid white;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      transition: 200ms width;
+      width: 0;
+      z-index: 1;
     }
   }
 }

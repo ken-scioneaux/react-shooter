@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import MainMenuList from './MainMenuList';
+import MenuList from './MenuList';
 
 export default class MainMenu extends Component {
   static contextTypes = {
@@ -30,7 +30,7 @@ export default class MainMenu extends Component {
     ];
     return (
       <div className="main-menu">
-        <MainMenuList options={menuListOptions} />
+        <MenuList options={menuListOptions} />
       </div>
     );
   }

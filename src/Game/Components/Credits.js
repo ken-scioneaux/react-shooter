@@ -1,5 +1,5 @@
-  // the main credits scrolling
 import React, { Component, PropTypes } from 'react';
+import MenuList from './MenuList';
 
 const BASE_STYLE = {
   position: 'absolute',
@@ -8,11 +8,6 @@ const BASE_STYLE = {
   margin: '0 auto',
   fontSize: '24px',
   textAlign: 'center',
-};
-
-const BUTTON_STYLE = {
-  width: '200px',
-  height: '50px',
 };
 
 const TWO_PI = 2 * Math.PI;
@@ -63,16 +58,18 @@ export default class Credits extends Component
     const textStyle = {
       color: `rgba(${red}, ${blue}, ${green}, 1.0)`,
     };
+    const menuListOptions = [
+      { label: 'Back to Main Menu', onClick: this.props.onMainMenu }
+    ];
     return (
-      <div style={ containerStyle }>
-        <p style={ textStyle }>
-          Made with love by Dan and Andrew
-        </p>
-        <p>
-          <button type="button" style={ BUTTON_STYLE } onClick={ this.props.onMainMenu }>
-            Back to Main Main
-          </button>
-        </p>
+      <div>
+        <MenuList options={menuListOptions} />
+
+        <div style={ containerStyle }>
+          <p style={ textStyle }>
+            Made with love by Dan and Andrew
+          </p>
+        </div>
       </div>
     );
   }

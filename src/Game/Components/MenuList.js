@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
-import MainMenuListItem from './MainMenuListItem';
+import MenuListItem from './MenuListItem';
 
-class MainMenuList extends Component {
+class MenuList extends Component {
   static propTypes = {
     options: PropTypes.arrayOf(PropTypes.shape({
       label: PropTypes.string.isRequired,
@@ -13,10 +13,10 @@ class MainMenuList extends Component {
     const { options } = this.props;
 
     return (
-      <ul className="main-menu-list">
+      <ul className="menu-list">
         {options.map((menuItem, i) => {
           return (
-            <MainMenuListItem key={i}
+            <MenuListItem key={i}
               label={menuItem.label}
               onClick={menuItem.onClick}
             />
@@ -27,4 +27,4 @@ class MainMenuList extends Component {
   }
 }
 
-export default MainMenuList;
+export default MenuList;

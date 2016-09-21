@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import VAlign from './VAlign';
 
-class MainMenuListItem extends Component {
+class MenuListItem extends Component {
   static propTypes = {
     label: PropTypes.string.isRequired,
     onClick: PropTypes.func.isRequired,
@@ -21,4 +21,4 @@ class MainMenuListItem extends Component {
   }
 }
 
-export default MainMenuListItem;
+export default MenuListItem;
