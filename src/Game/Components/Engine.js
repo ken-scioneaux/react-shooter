@@ -1,7 +1,8 @@
 // the main game engine
 import React, { Component, PropTypes } from 'react';
-import { Loop, World, Body, Sprite } from 'react-game-kit';
+import { Loop, World, Body } from 'react-game-kit';
 import GameBackground from './GameBackground';
+import Ship from './Ship';
 
 const TEXT_STYLE = {
   position: 'absolute',
@@ -57,17 +58,7 @@ class Engine extends Component {
         <GameBackground src={'black.png'} repeat position={tick}>
           <div style={ TEXT_STYLE }>We are in the game! {tick}</div>
           <div style={ SHIP_CONTAINER_STYLE }>
-            <Sprite
-              offset={[0,0]}
-              state={0}
-              steps={[0]}
-              scale={1}
-              repeat={false}
-              src={'ship.png'}
-              tileHeight={75}
-              tileWidth={98}
-              style={{ bottom: 0 }}
-            />
+            <Ship />
           </div>
         </GameBackground>
       </World>
