@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import { connect } from 'react-redux';
+import connect from '../../Lib/connect';
 import AbstractSprite from './AbstractSprite';
 
 class Ship extends Component
@@ -12,15 +12,15 @@ class Ship extends Component
     bottom: 0,
   };
   render() {
-    const { bottom, xOffset } = this.props;
+    const { bottom, xOffset, shipState } = this.props;
     return (
       <AbstractSprite
-        src={'ship.png'}
+        src={'PlayerShip-Style1.png'}
         tileHeight={75}
         tileWidth={98}
         offset={[0, 0]}
-        state={0}
-        steps={[0]}
+        state={shipState}
+        steps={[0, 0, 0, 0]}
         style={{ bottom, left: xOffset }}
       />
     );
@@ -32,4 +32,4 @@ class Ship extends Component
   };
 }
 
-export default connect(Ship.mapStateToProps)(Ship);
+export default connect(Ship);
