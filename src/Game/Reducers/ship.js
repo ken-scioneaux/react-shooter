@@ -7,32 +7,22 @@ const health = (state = MAX_SHIP_HEALTH, action) => {
     default:
       return state;
   }
-}
+};
 
-const offset = (state = [0, 0], action) => {
+/**
+ * xOffset:
+ *  - negative is left
+ *  - positive is right
+ *  - zero is dead center
+ */
+const xOffset = (state = 0, action) => {
   switch (action.type) {
     default:
       return state;
   }
 };
-
-const state = (state = 0, action) => {
-  switch (action.type) {
-    default:
-      return state;
-  }
-};
-
-const steps = (state = [0], action) => {
-  switch (action.type) {
-    default:
-      return state;
-  }
-}
 
 export default combineReducers({
-  offset,
-  state,
-  steps,
+  xOffset,
   health,
 });

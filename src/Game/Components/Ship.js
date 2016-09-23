@@ -1,41 +1,33 @@
 import React, { Component, PropTypes } from 'react';
-import { Sprite } from 'react-game-kit';
 import { connect } from 'react-redux';
+import AbstractSprite from './AbstractSprite';
 
 class Ship extends Component
 {
   static propTypes = {
-    offset: PropTypes.arrayOf(PropTypes.number.isRequired).isRequired,
-    state: PropTypes.number.isRequired,
-    steps: PropTypes.arrayOf(PropTypes.number.isRequired).isRequired,
-    scale: PropTypes.number,
-    repeat: PropTypes.bool,
-    src: PropTypes.string,
-    tileHeight: PropTypes.number,
-    tileWidth: PropTypes.number,
+    xOffset: PropTypes.number.isRequired,
     bottom: PropTypes.number,
   };
   static defaultProps = {
-    scale: 1,
-    repeat: false,
-    src: 'ship.png',
-    tileHeight: 75,
-    tileWidth: 98,
     bottom: 0,
   };
   render() {
-    const { bottom, ...restOfProps } = this.props;
+    const { bottom, xOffset } = this.props;
     return (
-      <Sprite
-        style={{ bottom }}
-        { ...restOfProps }
+      <AbstractSprite
+        src={'ship.png'}
+        tileHeight={75}
+        tileWidth={98}
+        offset={[0, 0]}
+        state={0}
+        steps={[0]}
+        style={{ bottom, left: xOffset }}
       />
     );
   }
-  static mapStateToProps = (state, ownProps) => {
+  static mapStateToProps = (state) => {
     return {
-      ...state.ship,
-      ...ownProps,
+      ...state.ship
     };
   };
 }
