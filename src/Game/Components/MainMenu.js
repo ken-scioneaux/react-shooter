@@ -1,7 +1,9 @@
 import React, { Component, PropTypes } from 'react';
 import MenuList from './MenuList';
+import connect from '../../Lib/connect';
+import { startLevel, credits } from '../Actions/mainState';
 
-export default class MainMenu extends Component {
+class MainMenu extends Component {
   static contextTypes = {
     loop: PropTypes.object,
   };
@@ -35,4 +37,10 @@ export default class MainMenu extends Component {
       </div>
     );
   }
+  static mapDispatchToProps = (dispatch, ownProps) => ({
+    onStartNewGame: () => dispatch(startLevel(1)),
+    onCredits: () => dispatch(credits()),
+  });
 }
+
+export default connect(MainMenu);

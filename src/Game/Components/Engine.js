@@ -3,6 +3,8 @@ import React, { Component, PropTypes } from 'react';
 import { Loop, World, Body } from 'react-game-kit';
 import GameBackground from './GameBackground';
 import Ship from './Ship';
+import { tick } from '../Actions/tick';
+import connect from '../../Lib/connect';
 
 const TEXT_STYLE = {
   position: 'absolute',
@@ -27,6 +29,10 @@ class Engine extends Component {
     loop: PropTypes.object,
   };
 
+  static propTypes = {
+    onTick: PropTypes.func.isRequired,
+  };
+
   constructor(props) {
     super(props);
     this.update = this.update.bind(this);
@@ -40,6 +46,7 @@ class Engine extends Component {
     this.setState({
       tick,
     });
+    this.props.onTick();
   };
 
   componentDidMount() {
@@ -64,6 +71,14 @@ class Engine extends Component {
       </World>
     );
   }
+  static mapDispatchToProps = (dispatch, ownProps) => ({
+    onTick: (state) => dispatch(tick(state)),
+  });
+  static mergeProps = (state, dispatch, ownProps) => ({
+    ...dispatch,
+    onTick: () => dispatch.onTick(state),
+    ...ownProps,
+  });
 }
 
-export default Engine;
+export default connect(Engine);

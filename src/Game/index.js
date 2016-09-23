@@ -4,6 +4,7 @@ import React, { Component, PropTypes } from 'react';
 import { Provider } from 'react-redux';
 import { Loop, Stage } from 'react-game-kit';
 
+import connect from '../Lib/connect';
 import MainState from './Components/MainState';
 
 export default class Game extends Component

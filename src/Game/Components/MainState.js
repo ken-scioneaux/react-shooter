@@ -1,16 +1,12 @@
 // toggles between the main game modes (main menu, in-game, level selection, etc)
 import React, { Component, PropTypes } from 'react';
-import { connect } from 'react-redux';
+import connect from '../../Lib/connect';
 
 import {
   STATE_MAIN_MENU,
   STATE_IN_LEVEL,
   STATE_GAME_OVER,
   STATE_CREDITS,
-  mainMenu,
-  startLevel,
-  credits,
-  gameOver,
 } from '../Actions/mainState';
 import MainMenu from './MainMenu';
 import Engine from './Engine';
@@ -27,32 +23,24 @@ class MainState extends Component
     ]).isRequired,
   };
   render() {
-    const { currentState, ...restOfProps } = this.props;
-    switch (currentState) {
-      case STATE_MAIN_MENU:
-        return <MainMenu { ...restOfProps } />;
-      case STATE_IN_LEVEL:
-        return <Engine { ...restOfProps } />;
-      case STATE_CREDITS:
-        return <Credits { ...restOfProps } />;
-      // TODO: add more states
+    if ('currentState' in this.props && this.props.currentState) {
+      switch (this.props.currentState) {
+        case STATE_MAIN_MENU:
+          return <MainMenu />;
+        case STATE_IN_LEVEL:
+          return <Engine />;
+        case STATE_CREDITS:
+          return <Credits />;
+        // TODO: add more states
+      }
     }
-    console.warn('Unhandled state:', currentState);
+    console.warn('Unhandled state:', this.props.currentState);
     return null;
   }
   static mapStateToProps = (state, ownProps) => ({
     currentState: state.mainState,
     ...ownProps
   });
-  static mapDispatchToProps = (dispatch, ownProps) => ({
-    onStartNewGame: () => dispatch(startLevel(1)),
-    onCredits: () => dispatch(credits()),
-    onMainMenu: () => dispatch(mainMenu()),
-    onDeath: () => dispatch(gameOver()),
-  });
 }
 
-export default connect(
-  MainState.mapStateToProps,
-  MainState.mapDispatchToProps
-)(MainState);
+export default connect(MainState);

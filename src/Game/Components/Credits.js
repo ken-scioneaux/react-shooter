@@ -1,5 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import MenuList from './MenuList';
+import { mainMenu } from '../Actions/mainState';
+import connect from '../../Lib/connect';
 
 const BASE_STYLE = {
   position: 'absolute',
@@ -12,7 +14,7 @@ const BASE_STYLE = {
 
 const TWO_PI = 2 * Math.PI;
 
-export default class Credits extends Component {
+class Credits extends Component {
   static MAX_TICKS = 240;
   static MAX_HEIGHT = 200;
   static contextTypes = {
@@ -72,4 +74,11 @@ export default class Credits extends Component {
       </div>
     );
   }
+  static mapDispatchToProps = (dispatch, ownProps) => {
+    return {
+      onMainMenu: () => dispatch(mainMenu()),
+    }
+  }
 }
+
+export default connect(Credits);
