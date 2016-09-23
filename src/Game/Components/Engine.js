@@ -5,6 +5,7 @@ import GameBackground from './GameBackground';
 import Ship from './Ship';
 import { tick } from '../Actions/tick';
 import connect from '../../Lib/connect';
+import MouseCapture from './MouseCapture';
 
 const TEXT_STYLE = {
   position: 'absolute',
@@ -61,14 +62,16 @@ class Engine extends Component {
     const { tick } = this.state;
     // place things like <World>, <Body>, etc here
     return (
-      <World>
-        <GameBackground src={'black.png'} repeat position={tick}>
-          <div style={ TEXT_STYLE }>We are in the game! {tick}</div>
-          <div style={ SHIP_CONTAINER_STYLE }>
-            <Ship />
-          </div>
-        </GameBackground>
-      </World>
+      <MouseCapture>
+        <World>
+          <GameBackground src={'black.png'} repeat position={tick}>
+            <div style={ TEXT_STYLE }>We are in the game! {tick}</div>
+            <div style={ SHIP_CONTAINER_STYLE }>
+              <Ship />
+            </div>
+          </GameBackground>
+        </World>
+      </MouseCapture>
     );
   }
   static mapDispatchToProps = (dispatch, ownProps) => ({
