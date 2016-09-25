@@ -2,6 +2,10 @@ import React, { Component, PropTypes } from 'react';
 import connect from '../../Lib/connect';
 import { moveShip } from '../Actions/ship';
 
+const MOUSE_STYLE = {
+  cursor: 'none',
+};
+
 class MouseCapture extends Component {
   static propTypes = {
     onMoveShip: PropTypes.func.isRequired,
@@ -13,14 +17,18 @@ class MouseCapture extends Component {
   onMouseMove(e) {
     // calculate the position of the mouse pointer relative to the stage
     // such that 0 is dead center horizontally
-    const position = Math.trunc(
-      (e.pageX - e.target.offsetLeft) - (e.target.offsetWidth / 2)
-    );
-    this.props.onMoveShip(position);
+    const xPos = Math.trunc(e.pageX - window.innerWidth / 2);
+    this.props.onMoveShip(xPos);
+  }
+  componentDidMount() {
+    window.addEventListener('mousemove', this.onMouseMove);
+  }
+  componentWillUnmount() {
+    window.removeEventListener('mousemove', this.onMouseMove);
   }
   render() {
     return (
-      <div onMouseMove={ this.onMouseMove }>
+      <div style={ MOUSE_STYLE }>
         { this.props.children }
       </div>
     )
