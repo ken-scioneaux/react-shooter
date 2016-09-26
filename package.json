@@ -7,7 +7,8 @@
     "build": "browserify ./src/app.js > ./dist/bundle.js",
     "dev": "watchify ./src/app.js -d -o ./dist/bundle.js -v",
     "serve": "ecstatic -p 3000 ./dist",
-    "sass": "node-sass -w ./sass/styles.scss ./dist/styles.css"
+    "sass": "node-sass -w ./sass/styles.scss ./dist/styles.css",
+    "sass_build": "node-sass ./sass/styles.scss ./dist/styles.css"
   },
   "keywords": [
     "game",
