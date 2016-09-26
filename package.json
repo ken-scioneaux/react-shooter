@@ -4,6 +4,7 @@
   "description": "A shooter built with React.",
   "main": "app.js",
   "scripts": {
+    "build_all": "npm run build && npm run sass_build",
     "build": "browserify ./src/app.js > ./dist/bundle.js",
     "dev": "watchify ./src/app.js -d -o ./dist/bundle.js -v",
     "serve": "ecstatic -p 3000 ./dist",
